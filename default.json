@@ -1,0 +1,100 @@
+{
+  "extends": [":timezone(Asia/Shanghai)", "config:base"],
+  "labels": ["renovate", "bot"],
+  "lockFileMaintenance": {
+    "automerge": true,
+    "enabled": true,
+    "extends": ["schedule:weekly"],
+    "postUpdateOptions": ["npmDedupe", "yarnDedupeHighest"],
+    "semanticCommitType": "chore"
+  },
+  "major": {
+    "enabled": false
+  },
+  "minor": {
+    "automerge": true
+  },
+  "npm": {
+    "stabilityDays": 14
+  },
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchDepTypes": ["engines", "circleci", "peerDependencies"]
+    },
+    {
+      "groupName": "babel packages",
+      "matchSourceUrlPrefixes": [
+        "https://github.com/babel/",
+        "https://github.com/zloirock/core-js"
+      ],
+      "matchUpdateTypes": ["patch", "minor"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "groupName": "postcss packages",
+      "matchPackageNames": ["postcss"],
+      "matchPackagePrefixes": ["postcss-"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "groupName": "webpack packages",
+      "matchSourceUrlPrefixes": [
+        "https://github.com/webpack-contrib/",
+        "https://github.com/webpack/",
+        "https://github.com/jantimon/html-webpack-plugin"
+      ],
+      "matchUpdateTypes": ["patch", "minor"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "groupName": "types packages",
+      "matchPackagePrefixes": ["@types/"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "groupName": "nice-move packages",
+      "matchPackageNames": [
+        "commitlint",
+        "eslint",
+        "garou",
+        "prettier",
+        "rustywind",
+        "stylelint",
+        "lint-staged",
+        "husky",
+        "syncpack"
+      ],
+      "matchPackagePrefixes": [
+        "@babel/eslint-",
+        "@commitlint/",
+        "@nice-move/",
+        "@prettier/",
+        "@typescript-eslint/",
+        "eslint-",
+        "prettier-",
+        "stylelint-"
+      ],
+      "matchUpdateTypes": ["patch", "minor"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "groupName": "best-shot packages",
+      "matchSourceUrlPrefixes": ["https://github.com/best-shot/"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "semanticCommitType": "chore"
+    }
+  ],
+  "patch": {
+    "automerge": true
+  },
+  "pin": {
+    "enabled": false
+  },
+  "prCreation": "not-pending",
+  "rangeStrategy": "bump",
+  "rebaseWhen": "behind-base-branch",
+  "semanticCommitType": "chore"
+}
