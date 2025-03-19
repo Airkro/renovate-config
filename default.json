@@ -5,7 +5,7 @@
     "automerge": true,
     "enabled": true,
     "extends": ["schedule:weekly"],
-    "postUpdateOptions": ["npmDedupe", "yarnDedupeHighest"],
+    "postUpdateOptions": ["npmDedupe", "yarnDedupeHighest", "pnpmDedupe"],
     "semanticCommitType": "chore"
   },
   "major": {
@@ -20,7 +20,12 @@
   "packageRules": [
     {
       "enabled": false,
-      "matchDepTypes": ["engines", "circleci", "peerDependencies"]
+      "matchDepTypes": ["engines", "circleci"]
+    },
+    {
+      "enabled": false,
+      "matchDepTypes": ["peerDependencies"],
+      "matchUpdateTypes": ["minor", "major"]
     },
     {
       "groupName": "babel packages",
@@ -61,17 +66,21 @@
         "eslint",
         "garou",
         "prettier",
-        "rustywind",
         "stylelint",
         "lint-staged",
         "husky",
-        "syncpack"
+        "syncpack",
+        "typescript-eslint",
+        "vue-eslint-parser"
       ],
       "matchPackagePrefixes": [
         "@babel/eslint-",
         "@commitlint/",
+        "@eslint-community/",
+        "@eslint/",
         "@nice-move/",
         "@prettier/",
+        "@stylistic/",
         "@typescript-eslint/",
         "eslint-",
         "prettier-",
